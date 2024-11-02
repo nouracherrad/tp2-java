@@ -1,81 +1,90 @@
-# Project Repository for Java Exercises
+# Java Application Exercises
 
-This repository contains four Java exercises designed to enhance object-oriented programming skills, implement data management concepts, and explore practical applications of Java in various domains. Below is a detailed description of each exercise, including the objectives, classes implemented, and key functionalities.
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Exercise 1: Library Management System](#exercise-1-library-management-system)
+   - [Classes: `Person`, `Member`, `Author`, `Book`](#classes-person-member-author-book)
+3. [Exercise 2: Salary Management System](#exercise-2-salary-management-system)
+   - [Class: `Employee`, `Engineer`, `Manager`](#class-employee-engineer-manager)
+4. [Exercise 3: Order Management System](#exercise-3-order-management-system)
+   - [Classes: `Computer`, `Category`, `Client`, `Order`, `OrderLine`](#classes-computer-category-client-order-orderline)
+5. [Exercise 4: Product Management System](#exercise-4-product-management-system)
+   - [Classes: `Product`, `IMetierProduit`, `MetierProduitImpl`](#classes-product-imetierproduit-metierproduitimpl)
+6. [Conclusion](#conclusion)
 
-## 1. Customer Order Management System
-This exercise focuses on developing an application for managing customer orders in a computer sales company. The application facilitates the following functionalities:
+## Introduction
+This document outlines the implementation of various Java applications designed for managing different systems, including a library, employee salaries, client orders, and product management. Each exercise is structured into classes with specific methods that encapsulate the functionalities required.
 
-- **Entities Managed**:
-  - **Ordinateur**: Represents computers available for sale, with attributes such as:
-    - `marque` (Brand)
-    - `prix` (Price)
-    - `description` (Description)
-    - `nbrStock` (Stock Quantity)
-    - `categorie` (Category)
-    - The class includes a method `getPrixPourQuantite(int quantite)` to calculate the total price based on the ordered quantity.
+## Exercise 1: Library Management System
+
+### Classes: `Person`, `Member`, `Author`, `Book`
+
+In this exercise, we developed a library management system with the following classes:
+
+- **`Person`**: The base class with attributes like name, first name, email, phone number, and age. It includes a constructor and a method to display these details.
   
-  - **Categorie**: Groups computers into specific categories, allowing for organization and management. It includes:
-    - `nom` (Name)
-    - `description` (Description)
-    - `ordinateurs` (List of Computers): Methods to add or remove computers from the category.
+- **`Member`**: Inherits from `Person` and adds a `memberNumber` attribute, overriding the display method to include member-specific information.
 
-  - **Client**: Represents customers of the company, containing details such as:
-    - `nom` (Last Name)
-    - `prenom` (First Name)
-    - `email` (Email Address)
-    - `telephone` (Phone Number)
-    - This class also manages a list of past orders made by the client.
+- **`Author`**: Also inherits from `Person`, with an additional `authorNumber` attribute and a custom display method for author details.
 
-  - **Commande**: Represents an order placed by a client with attributes like:
-    - `reference` (Order Reference)
-    - `dateCommande` (Order Date)
-    - `etatDeCommande` (Order Status)
-    - `client` (Client): A reference to the client who placed the order.
+- **`Book`**: Represents a book with attributes for ISBN, title, and an associated author. It includes a display method to show the book's details.
 
-  - **LigneCommande**: An associative class that links a specific computer to a customer order, including:
-    - `quantité` (Quantity)
-    - `commande` (Order): A reference to the associated order.
-    - `ordinateur` (Computer): A reference to the associated computer.
+### Class: `Main`
 
-## 2. Library Management System
-This exercise involves creating an application to manage books and library members. Key features of the system include:
+This class contains the `main()` method to test the implementation. It instantiates a member, an author, and a book, displaying their respective details.
 
-- **Entities Managed**:
-  - **Livre** (Book): Represents a book with attributes such as title, author, ISBN, and availability status.
-  - **Adherent** (Member): Represents library members, storing personal details and a list of borrowed books.
+## Exercise 2: Salary Management System
 
-- **Functionalities**:
-  - Adding and removing books from the library.
-  - Registering new members.
-  - Checking out and returning books with appropriate tracking of availability.
-  - Searching for books and members based on specific criteria.
+### Classes: `Employee`, `Engineer`, `Manager`
 
-## 3. Product Management with Interface Implementation
-In this exercise, the focus is on manipulating a collection of product objects using lists and interfaces, providing a solid understanding of Java collections and polymorphism. 
+This exercise focuses on managing employee salaries within a software development company:
 
-- **Key Components**:
-  - **Produit**: Represents products with the following attributes:
-    - `id`: Unique identifier for the product.
-    - `nom`: Name of the product.
-    - `marque`: Brand of the product.
-    - `prix`: Price of the product.
-    - `description`: Description of the product.
-    - `nombreEnStock`: Stock quantity available.
+- **`Employee`**: An abstract class that includes attributes for name, first name, email, phone number, and salary. It defines an abstract method to calculate salary.
 
-  - **IMetierProduit**: An interface that declares essential methods for managing product objects, including:
-    - `add(Produit p)`: Adds a product to the list.
-    - `getAll()`: Returns a list of all products.
-    - `findByNom(String motCle)`: Finds products whose names contain the specified keyword.
-    - `findById(long id)`: Retrieves a product by its ID.
-    - `delete(long id)`: Deletes a product by its ID.
+- **`Engineer`**: A subclass of `Employee` that includes a specialty attribute and implements the salary calculation method, applying a 15% increase.
 
-  - **MetierProduitImpl**: This class implements the `IMetierProduit` interface and manages a list of products. It provides concrete implementations for all methods defined in the interface, leveraging Java Streams for efficient querying.
+- **`Manager`**: Another subclass of `Employee`, containing a service attribute and a method that calculates salary with a 20% increase.
 
-- **User Interaction**: The application presents a console-based menu allowing users to perform operations such as adding, searching, retrieving, and deleting products interactively.
+### Class: `Main`
 
+In this class, the `main()` method tests the functionality by creating instances of `Engineer` and `Manager`, then displays their details.
 
+## Exercise 3: Order Management System
+
+### Classes: `Computer`, `Category`, `Client`, `Order`, `OrderLine`
+
+This exercise involves creating an order management system for a computer sales company:
+
+- **`Computer`**: Represents a computer with attributes like name, brand, price, description, and stock quantity. It includes a method to return the price based on quantity.
+
+- **`Category`**: Manages a list of computers with methods to add, remove, and search for computers by price.
+
+- **`Client`**: Represents a customer with personal information and a list of orders. It includes methods to add and remove orders.
+
+- **`Order`**: Contains details such as reference, client, order date, and order status.
+
+- **`OrderLine`**: Associates an order with a specific computer and includes a quantity attribute.
+
+### Class: `Main`
+
+The `main()` method in this class allows for testing the various classes by creating instances of computers, categories, and orders, then displaying the complete order details.
+
+## Exercise 4: Product Management System
+
+### Classes: `Product`, `IMetierProduit`, `MetierProduitImpl`
+
+This exercise centers on managing a collection of product objects:
+
+- **`Product`**: Defines attributes for a product, including ID, name, brand, price, description, and stock quantity.
+
+- **`IMetierProduit`**: An interface declaring methods for product management, such as adding, retrieving, searching by name, and deleting products.
+
+- **`MetierProduitImpl`**: Implements the interface, managing a list of products and providing the defined methods.
+
+### Class: `Main`
+
+The `main()` method presents a menu to the user, allowing interactions such as displaying products, searching by keyword, adding products, retrieving by ID, and deleting products.
 
 ## Conclusion
-These exercises aim to strengthen Java programming skills, emphasizing the use of object-oriented principles, data management techniques, and interface implementation. Each exercise is designed to be modular, well-documented, and can be executed independently. This repository serves as a comprehensive collection of practical programming exercises that are suitable for both learning and reference purposes.
-
-Feel free to clone this repository and explore the code to deepen your understanding of Java programming concepts!
+The Java applications developed in these exercises demonstrate the application of object-oriented programming concepts such as inheritance, abstraction, and interface implementation. Each program is modular, enhancing code clarity and maintainability while providing practical solutions for real-world scenarios.
+lone this repository and explore the code to deepen your understanding of Java programming concepts!
