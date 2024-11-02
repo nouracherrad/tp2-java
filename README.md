@@ -1,90 +1,115 @@
-# Java Application Exercises
+
+# LAB 2 POO Java :Héritage, Redéfinition, Polymorphisme,Classes abstraites et interfaces.
 
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Exercise 1: Library Management System](#exercise-1-library-management-system)
-   - [Classes: `Person`, `Member`, `Author`, `Book`](#classes-person-member-author-book)
+   - [Class: `Personne`](#class-personne)
+   - [Class: `Adherent`](#class-adherent)
+   - [Class: `Auteur`](#class-auteur)
+   - [Class: `Livre`](#class-livre)
+   - [Class: `Main`](#class-main)
 3. [Exercise 2: Salary Management System](#exercise-2-salary-management-system)
-   - [Class: `Employee`, `Engineer`, `Manager`](#class-employee-engineer-manager)
-4. [Exercise 3: Order Management System](#exercise-3-order-management-system)
-   - [Classes: `Computer`, `Category`, `Client`, `Order`, `OrderLine`](#classes-computer-category-client-order-orderline)
+   - [Class: `Employe`](#class-employe)
+   - [Class: `Ingenieur`](#class-ingenieur)
+   - [Class: `Manager`](#class-manager)
+   - [Class: `Main`](#class-main-2)
+4. [Exercise 3: Client Orders Management System](#exercise-3-client-orders-management-system)
+   - [Class: `Ordinateur`](#class-ordinateur)
+   - [Class: `Categorie`](#class-categorie)
+   - [Class: `Commande`](#class-commande)
+   - [Class: `LigneCommande`](#class-lignecommande)
+   - [Class: `Client`](#class-client)
+   - [Class: `Main`](#class-main-3)
 5. [Exercise 4: Product Management System](#exercise-4-product-management-system)
-   - [Classes: `Product`, `IMetierProduit`, `MetierProduitImpl`](#classes-product-imetierproduit-metierproduitimpl)
+   - [Class: `Produit`](#class-produit)
+   - [Class: `IMetierProduit`](#class-imetierproduit)
+   - [Class: `MetierProduitImpl`](#class-metierproduitimpl)
+   - [Class: `Application`](#class-application)
 6. [Conclusion](#conclusion)
 
 ## Introduction
-This document outlines the implementation of various Java applications designed for managing different systems, including a library, employee salaries, client orders, and product management. Each exercise is structured into classes with specific methods that encapsulate the functionalities required.
+This document outlines the implementation of various Java programs designed to perform specific operations related to library management, salary management, client orders, and product management. Each program demonstrates the use of key object-oriented programming principles such as inheritance, method overriding, polymorphism, abstract classes, and interfaces.
+
+The **inheritance** feature is utilized to create hierarchical relationships between classes, allowing derived classes to inherit attributes and methods from their base classes. This promotes code reuse and reduces redundancy. **Method overriding** is applied in several exercises to customize the behavior of inherited methods, providing flexibility in how methods are executed based on the object's type. **Polymorphism** is leveraged to enable objects of different classes to be treated as objects of a common superclass, facilitating dynamic method binding and enhancing code scalability.
+
+Moreover, the implementation of **abstract classes** and **interfaces** exemplifies the importance of defining contracts for behavior without enforcing a specific implementation. This allows for more modular code where classes can implement these contracts in their own ways, promoting separation of concerns and adherence to the principles of loose coupling and high cohesion.
 
 ## Exercise 1: Library Management System
 
-### Classes: `Person`, `Member`, `Author`, `Book`
+### Class: `Personne`
+This class represents a person with attributes like name, surname, email, phone, and age. It includes a constructor to initialize these attributes and a method to display them.
 
-In this exercise, we developed a library management system with the following classes:
+### Class: `Adherent`
+This class extends `Personne` and adds a `numAdherent` attribute while overriding the display method to include this new attribute.
 
-- **`Person`**: The base class with attributes like name, first name, email, phone number, and age. It includes a constructor and a method to display these details.
-  
-- **`Member`**: Inherits from `Person` and adds a `memberNumber` attribute, overriding the display method to include member-specific information.
+### Class: `Auteur`
+Similar to `Adherent`, this class also extends `Personne`, adding a `numAuteur` attribute and overriding the display method.
 
-- **`Author`**: Also inherits from `Person`, with an additional `authorNumber` attribute and a custom display method for author details.
-
-- **`Book`**: Represents a book with attributes for ISBN, title, and an associated author. It includes a display method to show the book's details.
+### Class: `Livre`
+This class represents a book with attributes such as ISBN and author, along with a display method to show the book's details.
 
 ### Class: `Main`
+The main application class where instances of `Adherent`, `Livre`, and `Auteur` are created, and their details are displayed.
 
-This class contains the `main()` method to test the implementation. It instantiates a member, an author, and a book, displaying their respective details.
+**Learning Interest:** This exercise allows discovering the concept of method overriding.
 
 ## Exercise 2: Salary Management System
 
-### Classes: `Employee`, `Engineer`, `Manager`
+### Class: `Employe`
+An abstract class that defines the common attributes for employees, including name, surname, email, phone, and salary. It also declares an abstract method to calculate the salary.
 
-This exercise focuses on managing employee salaries within a software development company:
+### Class: `Ingenieur`
+This class extends `Employe` and implements the salary calculation method, incorporating a 15% salary increase.
 
-- **`Employee`**: An abstract class that includes attributes for name, first name, email, phone number, and salary. It defines an abstract method to calculate salary.
-
-- **`Engineer`**: A subclass of `Employee` that includes a specialty attribute and implements the salary calculation method, applying a 15% increase.
-
-- **`Manager`**: Another subclass of `Employee`, containing a service attribute and a method that calculates salary with a 20% increase.
-
-### Class: `Main`
-
-In this class, the `main()` method tests the functionality by creating instances of `Engineer` and `Manager`, then displays their details.
-
-## Exercise 3: Order Management System
-
-### Classes: `Computer`, `Category`, `Client`, `Order`, `OrderLine`
-
-This exercise involves creating an order management system for a computer sales company:
-
-- **`Computer`**: Represents a computer with attributes like name, brand, price, description, and stock quantity. It includes a method to return the price based on quantity.
-
-- **`Category`**: Manages a list of computers with methods to add, remove, and search for computers by price.
-
-- **`Client`**: Represents a customer with personal information and a list of orders. It includes methods to add and remove orders.
-
-- **`Order`**: Contains details such as reference, client, order date, and order status.
-
-- **`OrderLine`**: Associates an order with a specific computer and includes a quantity attribute.
+### Class: `Manager`
+Like `Ingenieur`, this class extends `Employe` but implements the salary calculation with a 20% increase.
 
 ### Class: `Main`
+The main application class that creates instances of `Ingenieur` and `Manager`, displaying their details.
 
-The `main()` method in this class allows for testing the various classes by creating instances of computers, categories, and orders, then displaying the complete order details.
+**Learning Interest:** This exercise focuses on the use of abstract methods in class design.
+
+## Exercise 3: Client Orders Management System
+
+### Class: `Ordinateur`
+Represents a computer with attributes like name, brand, price, description, and stock quantity. It includes methods to manage pricing based on quantity.
+
+### Class: `Categorie`
+This class handles categories of computers, maintaining a list of computers and methods to add, remove, and search computers by price.
+
+### Class: `Commande`
+Represents an order with attributes for reference, client, order date, and status.
+
+### Class: `LigneCommande`
+An association class that links a specific order to a computer and includes quantity attributes.
+
+### Class: `Client`
+This class holds client information along with a list of orders and methods to manage them.
+
+### Class: `Main`
+The main application class that instantiates objects and displays order details.
+
+**Learning Interest:** This exercise allows the use of an association class to model relationships between objects.
 
 ## Exercise 4: Product Management System
 
-### Classes: `Product`, `IMetierProduit`, `MetierProduitImpl`
+### Class: `Produit`
+Represents a product with attributes like ID, name, brand, price, description, and stock quantity.
 
-This exercise centers on managing a collection of product objects:
+### Class: `IMetierProduit`
+An interface that declares methods for managing product objects, including adding, retrieving, searching, and deleting products.
 
-- **`Product`**: Defines attributes for a product, including ID, name, brand, price, description, and stock quantity.
+### Class: `MetierProduitImpl`
+Implements the `IMetierProduit` interface, managing a list of products.
 
-- **`IMetierProduit`**: An interface declaring methods for product management, such as adding, retrieving, searching by name, and deleting products.
+### Class: `Application`
+The main application class that provides a menu for users to interact with the product management system.
 
-- **`MetierProduitImpl`**: Implements the interface, managing a list of products and providing the defined methods.
-
-### Class: `Main`
-
-The `main()` method presents a menu to the user, allowing interactions such as displaying products, searching by keyword, adding products, retrieving by ID, and deleting products.
+**Learning Interest:** This exercise emphasizes the use of interfaces for modular design and implementation.
 
 ## Conclusion
-The Java applications developed in these exercises demonstrate the application of object-oriented programming concepts such as inheritance, abstraction, and interface implementation. Each program is modular, enhancing code clarity and maintainability while providing practical solutions for real-world scenarios.
-lone this repository and explore the code to deepen your understanding of Java programming concepts!
+The Java programs developed serve distinct purposes in managing library operations, employee salaries, client orders, and product inventories. Each program is structured into well-defined classes and methods, promoting modularity and reusability. By employing **inheritance**, the programs illustrate how shared functionality can be effectively implemented across related classes. The use of **method overriding** and **polymorphism** enhances the flexibility of method behaviors, allowing for dynamic decision-making at runtime.
+
+Furthermore, the incorporation of **abstract classes** and **interfaces** demonstrates the significance of defining behavior contracts while allowing for diverse implementations. This approach fosters cleaner code architecture, enabling better maintainability and scalability as new functionalities or requirements emerge. Overall, these principles collectively enhance the clarity, organization, and effectiveness of the object-oriented design in the Java programs.
+
